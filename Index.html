@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI CyberShield - Cybersecurity Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🛡️ AI CyberShield</h1>
+                <p class="tagline">Your AI-Powered Cybersecurity Assistant</p>
+                <p class="subtitle">Protect yourself from common cyber threats with intelligent analysis</p>
+            </div>
+        </header>
+
+        <!-- Navigation Menu -->
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showSection('password')" class="nav-link active">🔐 Password Analyzer</a></li>
+                <li><a href="#" onclick="showSection('phishing')" class="nav-link">🎣 Phishing Detector</a></li>
+                <li><a href="#" onclick="showSection('file')" class="nav-link">🛡️ File Scanner</a></li>
+                <li><a href="#" onclick="showSection('tips')" class="nav-link">📚 Security Tips</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- 1. Password Strength Analyzer Section -->
+            <section id="password" class="section active">
+                <div class="section-header">
+                    <h2>🔐 Password Strength Analyzer</h2>
+                    <p>Check your password strength and get personalized recommendations</p>
+                </div>
+                
+                <div class="section-body">
+                    <div class="input-group">
+                        <input 
+                            type="password" 
+                            id="passwordInput" 
+                            placeholder="Enter your password here..."
+                            class="input-field"
+                            onkeyup="checkPassword()"
+                        >
+                        <button onclick="checkPassword()" class="btn-primary">Analyze Password</button>
+                    </div>
+
+                    <div id="passwordResult" class="result-container hidden">
+                        <div id="passwordStrength" class="strength-indicator"></div>
+                        <div id="passwordScore" class="score-display"></div>
+                        <div id="passwordFeedback" class="feedback-list"></div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>💡 Password Tips</h3>
+                        <ul>
+                            <li>✅ Use at least 12 characters</li>
+                            <li>✅ Mix uppercase and lowercase letters</li>
+                            <li>✅ Include numbers (0-9)</li>
+                            <li>✅ Add special characters (!@#$%)</li>
+                            <li>✅ Avoid personal information</li>
+                            <li>✅ Don't reuse passwords</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Phishing URL Detector Section -->
+            <section id="phishing" class="section hidden">
+                <div class="section-header">
+                    <h2>🎣 Phishing URL Detector</h2>
+                    <p>Identify suspicious links and potential phishing attempts</p>
+                </div>
+                
+                <div class="section-body">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="urlInput" 
+                            placeholder="Paste URL here (e.g., https://example.com)..."
+                            class="input-field"
+                        >
+                        <button onclick="checkPhishing()" class="btn-primary">Check URL</button>
+                    </div>
+
+                    <div id="phishingResult" class="result-container hidden">
+                        <div id="phishingRisk" class="risk-indicator"></div>
+                        <div id="phishingIndicators" class="indicators-list"></div>
+                        <div id="phishingRecommendation" class="recommendation-box"></div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>🎯 Phishing Red Flags</h3>
+                        <ul>
+                            <li>⚠️ Suspicious keywords (verify, confirm, urgent)</li>
+                            <li>⚠️ IP addresses instead of domain names</li>
+                            <li>⚠️ HTTP instead of HTTPS</li>
+                            <li>⚠️ Unusual or very long URLs</li>
+                            <li>⚠️ Requests for personal information</li>
+                            <li>⚠️ Unexpected sender addresses</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Suspicious File Scanner Section -->
+            <section id="file" class="section hidden">
+                <div class="section-header">
+                    <h2>🛡️ Suspicious File Scanner</h2>
+                    <p>Analyze files for potential security threats</p>
+                </div>
+                
+                <div class="section-body">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="fileInput" 
+                            placeholder="Enter filename (e.g., document.exe)..."
+                            class="input-field"
+                        >
+                        <button onclick="scanFile()" class="btn-primary">Scan File</button>
+                    </div>
+
+                    <div id="fileResult" class="result-container hidden">
+                        <div id="fileThreat" class="threat-indicator"></div>
+                        <div id="fileIndicators" class="indicators-list"></div>
+                        <div id="fileRecommendation" class="recommendation-box"></div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>🚨 Dangerous File Types</h3>
+                        <ul>
+                            <li>🔴 Executables: .exe, .bat, .cmd, .com</li>
+                            <li>🔴 Scripts: .vbs, .js, .jar, .scr</li>
+                            <li>🔴 Archives: .zip, .rar (if unexpected)</li>
+                            <li>⚠️ Double extensions: .pdf.exe, .txt.bat</li>
+                            <li>⚠️ Files with spaces to hide extension</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Security Tips Section -->
+            <section id="tips" class="section hidden">
+                <div class="section-header">
+                    <h2>📚 Cybersecurity Tips & Best Practices</h2>
+                    <p>Learn how to protect yourself from cyber threats</p>
+                </div>
+                
+                <div class="section-body">
+                    <button onclick="loadSecurityTips()" class="btn-primary">Load Security Tips</button>
+                    
+                    <div id="tipsResult" class="tips-container hidden">
+                        <div id="tipsList" class="tips-list"></div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>🛡️ Multi-Layer Security Approach</h3>
+                        <ul>
+                            <li>🔐 <strong>Authentication:</strong> Use strong passwords and 2FA</li>
+                            <li>🌐 <strong>Network:</strong> Use VPN on public WiFi</li>
+                            <li>📧 <strong>Email:</strong> Verify sender before clicking links</li>
+                            <li>🔄 <strong>Updates:</strong> Keep software updated</li>
+                            <li>💾 <strong>Backup:</strong> Regularly backup important data</li>
+                            <li>🧠 <strong>Education:</strong> Stay informed about threats</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>&copy; 2024 <strong>AI CyberShield</strong>. Protecting your digital security.</p>
+            <p>Made with ❤️ for cybersecurity awareness | <a href="#" class="footer-link">Privacy Policy</a> | <a href="#" class="footer-link">Contact</a></p>
+            <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;">Version 1.0.0 | MIT License</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+                          </html>
+                                                                                           
